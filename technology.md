@@ -16,5 +16,5 @@ game performance.
 
 The data layer holds the game logic and the information about the game objects, even the 
 ones which are not visible or rendered. 
-The view layer contains all the visible game objects with their textures, materials effects
+The view layer contains all the visible game objects with their textures, materials, effects
 and animations.
