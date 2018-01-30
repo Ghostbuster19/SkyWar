@@ -1,4 +1,4 @@
-*Used technologies:*
+# Used technologies:
 
 The main technology used is the Unity game engine accompanied by C#-Scripts, it controls
 physics calculation, collision detection , object rendering and much more. The C#-Scripts
