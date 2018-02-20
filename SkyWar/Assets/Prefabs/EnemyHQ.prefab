@@ -9,44 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1517216354144078}
+  m_RootGameObject: {fileID: 1239067527199720}
   m_IsPrefabParent: 1
---- !u!1 &1517216354144078
+--- !u!1 &1239067527199720
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4868687186267636}
-  - component: {fileID: 33776119913163734}
-  - component: {fileID: 23645071814051344}
-  m_Layer: 0
+  - component: {fileID: 4776953157590314}
+  - component: {fileID: 33351373593554220}
+  - component: {fileID: 23939169313372442}
+  - component: {fileID: 64903688416374926}
+  - component: {fileID: 114756288319505152}
+  m_Layer: 8
   m_Name: EnemyHQ
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &4868687186267636
+--- !u!4 &4776953157590314
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517216354144078}
-  m_LocalRotation: {x: -0.6532815, y: -0.27059805, z: -0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 4.6157227, y: 8.93, z: -4.782776}
-  m_LocalScale: {x: 0.14345458, y: 0.13394, z: 0.18572718}
+  m_GameObject: {fileID: 1239067527199720}
+  m_LocalRotation: {x: -0.6498379, y: -0.27876645, z: -0.27876645, w: 0.6498379}
+  m_LocalPosition: {x: -35.3, y: 7, z: 31.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -45}
---- !u!23 &23645071814051344
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -46.437004}
+--- !u!23 &23939169313372442
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517216354144078}
+  m_GameObject: {fileID: 1239067527199720}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -55,10 +57,10 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3d48fabb6699d844b8016819c98f0b6d, type: 2}
-  - {fileID: 2100000, guid: 3d48fabb6699d844b8016819c98f0b6d, type: 2}
-  - {fileID: 2100000, guid: 3d48fabb6699d844b8016819c98f0b6d, type: 2}
-  - {fileID: 2100000, guid: 3d48fabb6699d844b8016819c98f0b6d, type: 2}
+  - {fileID: 2100000, guid: e9111e3d53e864b45b37409f07504046, type: 2}
+  - {fileID: 2100000, guid: d950f5b369323b94c811152e1469d04e, type: 2}
+  - {fileID: 2100000, guid: 87bc765e243df99409d38fbc832b6a02, type: 2}
+  - {fileID: 2100000, guid: e9111e3d53e864b45b37409f07504046, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,10 +80,56 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33776119913163734
+--- !u!33 &33351373593554220
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517216354144078}
+  m_GameObject: {fileID: 1239067527199720}
   m_Mesh: {fileID: 4300000, guid: c4298a431ebd5d44582bfc113b17f588, type: 3}
+--- !u!64 &64903688416374926
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239067527199720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: c4298a431ebd5d44582bfc113b17f588, type: 3}
+--- !u!114 &114756288319505152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239067527199720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a441c7776d18c9142802a0b639daf834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Waves:
+  - enemy: {fileID: 1181375234247558, guid: ce7f98624863fcb4891b8d9fafe10135, type: 2}
+    count: 20
+    rate: 2
+  - enemy: {fileID: 1181375234247558, guid: ce7f98624863fcb4891b8d9fafe10135, type: 2}
+    count: 30
+    rate: 2
+  - enemy: {fileID: 1181375234247558, guid: ce7f98624863fcb4891b8d9fafe10135, type: 2}
+    count: 40
+    rate: 2
+  - enemy: {fileID: 1181375234247558, guid: ce7f98624863fcb4891b8d9fafe10135, type: 2}
+    count: 50
+    rate: 2
+  - enemy: {fileID: 1181375234247558, guid: ce7f98624863fcb4891b8d9fafe10135, type: 2}
+    count: 60
+    rate: 2
+  SpwanPoint: {fileID: 0}
+  TimeBetweenWaves: 30
+  BigOneCooldown: 120
+  Cooldown: 1
+  PowerUp: 1

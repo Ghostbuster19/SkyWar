@@ -1,0 +1,68 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyBullet : MonoBehaviour {
+
+    public float Speed = 10f;
+    public static float StartingDamage = 20f;
+    public float Damage;
+    private Transform _target;
+
+    void Start()
+    {
+        Damage = StartingDamage;
+    }
+
+    public static void IncreaseDamage(float amount)
+    {
+        StartingDamage *= amount;
+    }
+
+    // Use this for initialization
+    public void Seek(Transform target)
+    {
+        _target = target;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (_target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Vector3 distance = _target.position - transform.position;
+        float distanceThisFrame = Speed * Time.deltaTime;
+
+        if (distance.magnitude <= distanceThisFrame)
+        {
+            HitTarget();
+            return;
+        }
+
+        transform.Translate(distance.normalized * distanceThisFrame, Space.World);
+    }
+
+    void HitTarget()
+    {
+        DamageTarget(_target);
+        Destroy(gameObject);
+    }
+
+    void DamageTarget(Transform thisTarget)
+    {
+        BagiController enemy = thisTarget.GetComponent<BagiController>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(Damage);
+        }
+        else
+        {
+            PlayerTurretController turretController = thisTarget.GetComponent<PlayerTurretController>();
+            turretController.TakeDamage(Damage);
+        }
+    }
+}
