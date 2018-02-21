@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour {
 
+    // Bullet stats
     public float Speed = 10f;
     public static float StartingDamage = 20f;
     public float Damage;
+
+    // The bullets target.
     private Transform _target;
 
     void Start()
@@ -19,13 +22,14 @@ public class EnemyBullet : MonoBehaviour {
         StartingDamage *= amount;
     }
 
-    // Use this for initialization
+    // Set the bullets target.
     public void Seek(Transform target)
     {
         _target = target;
     }
 
-    // Update is called once per frame
+    // Check if target is exsisting and move towards it.
+    // If the bullet kills the target it will be destroyed.
     void Update()
     {
         if (_target == null)
@@ -46,22 +50,25 @@ public class EnemyBullet : MonoBehaviour {
         transform.Translate(distance.normalized * distanceThisFrame, Space.World);
     }
 
+    // Damage the target and destroy bullet.
     void HitTarget()
     {
-        DamageTarget(_target);
+        if(_target != null)
+            DamageTarget(_target);
         Destroy(gameObject);
     }
 
+    // Decide wether the target is a turret or a Bagi.
     void DamageTarget(Transform thisTarget)
     {
         BagiController enemy = thisTarget.GetComponent<BagiController>();
+        PlayerTurretController turretController = thisTarget.GetComponent<PlayerTurretController>();
         if (enemy != null)
         {
             enemy.TakeDamage(Damage);
         }
-        else
+        else if (turretController != null)
         {
-            PlayerTurretController turretController = thisTarget.GetComponent<PlayerTurretController>();
             turretController.TakeDamage(Damage);
         }
     }

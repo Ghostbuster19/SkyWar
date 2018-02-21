@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class EnemyRocket : MonoBehaviour {
 
+    // Rocket Specs.
     public float Speed = 10f;
     public static float StartingDamage = 50f;
     public float Damage;
+
+    // The rockets target.
     private Transform _target;
 
+    // Set the rockets damage.
     void Start()
     {
         Damage = StartingDamage;
     }
 
+    // Called when upgrading.
     public static void IncreaseDamage(float amount)
     {
         StartingDamage *= amount;
     }
 
-    // Use this for initialization
+    // Set the rockets target.
     public void Seek(Transform target)
     {
         _target = target;
     }
 
-    // Update is called once per frame
+    // Check if rocket is in damaging distance.
+    // If yes, damage enemy and destroy rocket.
+    // if not, keep moving towards target.
     void Update()
     {
         if (_target == null)
@@ -47,6 +54,7 @@ public class EnemyRocket : MonoBehaviour {
         transform.Translate(distance.normalized * distanceThisFrame, Space.World);
     }
 
+    // Damage the target and destroy rocket.
     void HitTarget()
     {
         DamageTarget(_target);
@@ -61,6 +69,5 @@ public class EnemyRocket : MonoBehaviour {
         {
             enemy.TakeDamage(Damage);
         }
-        else Debug.Log("Didnt find Enemy");
     }
 }

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114756288319505152}
   m_Layer: 8
   m_Name: EnemyHQ
-  m_TagString: Enemy
+  m_TagString: EnemyBagi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -133,3 +133,4 @@ MonoBehaviour:
   BigOneCooldown: 120
   Cooldown: 1
   PowerUp: 1
+  IsBigOneActive: 0

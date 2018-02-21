@@ -1,32 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Same functionality as PlayerTurretController but it attacks the
+/// player Bagis.
+/// </summary>
 public class EnemyTurretController : MonoBehaviour {
 
     [Header("Attributes")]
     public AudioClip Explosion;
     public AudioClip DestructionClip;
+    public GameObject RocketPrefab;
+    public Transform FirePoint;
 
-    public float Health;
+    private Transform target;
+    private Quaternion startingPosition;
+
     public static float StartingHealth;
+
+    // Turret specs.
+    public float Health;
     public float Range = 10f;
     public float FireRate = 1f;
     public float RotationSpeed = 10f;
     public float ResetSpeed = 10f;
-    public GameObject RocketPrefab;
-    public Transform FirePoint;
+
     public string Tag = "Enemy";
 
-    private Transform target;
-    private Quaternion startingPosition;
     private float fireCooldown = 0f;
 
-    // Use this for initialization
     void Start()
     {
         StartingHealth = Health;
-        Debug.Log("Satrting health: " + StartingHealth);
         startingPosition = transform.rotation;
         InvokeRepeating("UpdateTarget", 0f, 0.33f);
     }
@@ -55,7 +60,6 @@ public class EnemyTurretController : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (target == null)
@@ -98,6 +102,7 @@ public class EnemyTurretController : MonoBehaviour {
         if (Health <= 0)
         {
             AudioSource.PlayClipAtPoint(DestructionClip, transform.position);
+            Debug.Log("Destroying GameObject");
             Destroy(gameObject);
         }
     }

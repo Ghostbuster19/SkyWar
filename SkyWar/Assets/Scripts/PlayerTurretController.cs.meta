@@ -1,11 +1,17 @@
 fileFormatVersion: 2
 guid: 4b544e2d49f720642a4cf125a4f143d0
-timeCreated: 1518991479
+timeCreated: 1519174696
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Explosion: {fileID: 8300000, guid: ada2b838da7759d4d9e7057a3350de85, type: 3}
+  - DestructionClip: {fileID: 8300000, guid: 68dddb99aa4aafd4caddbd12284ab73f, type: 3}
+  - UpgradeError: {fileID: 8300000, guid: 86794b747ffe619439a5f0a905e76f3a, type: 3}
+  - UpgradeSuccess: {fileID: 8300000, guid: 57594317e1ff86048841e4c8427a6b07, type: 3}
+  - RocketPrefab: {instanceID: 0}
+  - FirePoint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

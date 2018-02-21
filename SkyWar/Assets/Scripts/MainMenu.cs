@@ -13,11 +13,14 @@ public class MainMenu : MonoBehaviour
     public RawImage ProgressImage;
     public float RotateSpeed;
 
+    // Method for the play button in the main menu.
+    // Loads the game asynchronously.
     public void PlayGame()
     {
         StartCoroutine(LoadGameAsync()); 
     }
 
+    // Method for loading the game asynchronously.
     IEnumerator LoadGameAsync()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
@@ -34,6 +37,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    // Mehtod for quitting the game. Does not work in the editor.
     public void QuitGame()
     {
         Debug.Log("Quit!");

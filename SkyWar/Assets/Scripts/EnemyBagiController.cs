@@ -7,44 +7,46 @@ using UnityEngine.SocialPlatforms;
 
 public class EnemyBagiController : MonoBehaviour
 {
-    public float DetectionRange = 500f;
+    // The prefab bullet which the enemy spawns to hit a target.
+    public GameObject BulletPrefab;
+    // Audio clip when firing.
     public AudioClip FireSound;
 
+    // The object responsible for movement.
+    private NavMeshAgent agent;
+    // The closest target.
+    private Transform target;
+    // The closest firing target.
+    private Transform firingTarget;
+
     [Header("Enemy Specs")]
-    public float FiringRange = 30;
+    public float DetectionRange = 500f;
+    public float FiringRange = 30f;
     public float Health;
     public float Worth;
     public float FireRate = 2f;
     public float FireCooldown = 1f;
-    public GameObject BulletPrefab;
-
+    
+    // Starting specs for enemies, same for everyone.
     private float _startingHealth = 100f;
     private float _startingWorth = 40f;
-
-    // The number which indicates the right mouse button
-    private const int RIGHT_MOUSE_BUTTON = 1;
-    
-    private NavMeshAgent agent;
-    private Transform target;
-    private Transform firingTarget;
 
     // The Tag that decides which objects are to be attacked
     private string tag = "Player";
 
-    private bool isDead;
-
-    // Use this for initialization
+    // Initializing specs and invoking the "UpdateTarget"-method.
+    // Explained later.
     void Start()
     {
         Health = _startingHealth;
         Worth = _startingWorth;
-        isDead = false;
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = FiringRange;
         InvokeRepeating("UpdateTarget", 0f, 0.33f);
     }
 
-    // Update is called once per frame
+    // Checks for a target, if it finds one, it will move to its position.
+    // If the enemy is close enough, it will fire at its target.
     void Update()
     {
         if (target != null)
@@ -69,6 +71,8 @@ public class EnemyBagiController : MonoBehaviour
         }
     }
 
+    // Called every half second to update the target.
+    // To know if it was destroyed or something like that.
     void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
@@ -105,6 +109,8 @@ public class EnemyBagiController : MonoBehaviour
 
     }
 
+    // Instatinate bullet and set its target.
+    // Plays firing audio clip.
     void Shoot()
     {
         GameObject bulletObject = Instantiate(BulletPrefab, transform.position, transform.rotation) as GameObject;
@@ -122,27 +128,28 @@ public class EnemyBagiController : MonoBehaviour
         agent.SetDestination(position);
     }
 
+    // When the enemy is hit.
     public void TakeDamage(float amount)
     {
-        Debug.Log("Received Damage: " + amount + "Decreasing Health from: " + Health);
         Health -= amount;
-        Debug.Log("Decresed Heath to: " + Health);
         if (Health <= 0)
             Die();
     }
 
     void Die()
     {
-        isDead = true;
         Destroy(gameObject);
         EnemyWaveSpawner.EnemiesAlive--;
+        PlayerStats.Money += Worth;
     }
 
+    // Upgrading health.
     public void IncreaseHealth(float amount)
     {
         _startingHealth *= amount;
     }
 
+    // Upgrading Worth.
     public void IncreaseWorth(float amount)
     {
         _startingWorth *= amount;
@@ -150,11 +157,8 @@ public class EnemyBagiController : MonoBehaviour
 
     public void SetAttributes()
     {
-        Debug.Log("Setting Attributes");
-        Debug.Log("_startingHealth: " + _startingHealth + ", StartingWort: " + _startingWorth);
         Health = _startingHealth;
         Worth = _startingWorth;
-        Debug.Log("Health: " + Health + ", Worth: " + Worth);
     }
 
     void OnDrawGizmosSelected()

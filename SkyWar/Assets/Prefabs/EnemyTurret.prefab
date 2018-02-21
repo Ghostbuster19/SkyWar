@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4454812725560822}
-  - component: {fileID: 114908625108508046}
+  - component: {fileID: 114260821612288642}
   m_Layer: 8
   m_Name: RotatableParts
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,8 +42,8 @@ GameObject:
   m_Name: TurretArms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1262980390628198
 GameObject:
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4539003639914480}
   m_Layer: 8
   m_Name: EnemyTurret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,8 +90,8 @@ GameObject:
   m_Name: TurretBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1924853026683420
 GameObject:
@@ -106,10 +106,10 @@ GameObject:
   - component: {fileID: 64875045217881024}
   m_Layer: 8
   m_Name: TurretPlatform
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1982859696509830
 GameObject:
@@ -126,8 +126,8 @@ GameObject:
   m_Name: TurretLegs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4033770542999046
 Transform:
@@ -186,7 +186,7 @@ Transform:
   - {fileID: 4775048622663570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.37, y: -315.803, z: -0.006}
+  m_LocalEulerAnglesHint: {x: -0.123, y: 44.735, z: 0.001}
 --- !u!4 &4775048622663570
 Transform:
   m_ObjectHideFlags: 1
@@ -453,7 +453,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 6f5930741c4ed7c4a907b7f2dd9983ac, type: 3}
---- !u!114 &114908625108508046
+--- !u!114 &114260821612288642
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -461,15 +461,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1042603944863572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b544e2d49f720642a4cf125a4f143d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 28079be9005902e43a41e3a678d15502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 8300000, guid: ada2b838da7759d4d9e7057a3350de85, type: 3}
+  DestructionClip: {fileID: 8300000, guid: 68dddb99aa4aafd4caddbd12284ab73f, type: 3}
+  Health: 5000
   Range: 100
   FireRate: 5
   RotationSpeed: 10
   ResetSpeed: 10
-  RocketPrefab: {fileID: 1771883750897732, guid: 41e77da737f67ab4e90fd8e5023d9ede,
+  RocketPrefab: {fileID: 1636131862871458, guid: 41e77da737f67ab4e90fd8e5023d9ede,
     type: 2}
-  FirePoint: {fileID: 4239921823659776}
+  FirePoint: {fileID: 4454812725560822}
   Tag: Player

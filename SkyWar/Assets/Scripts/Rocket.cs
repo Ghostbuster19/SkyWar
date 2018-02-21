@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TreeEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
-
+    // Rocket stats.
     public float Speed = 10f;
     public static float StartingDamage = 50f;
     public float Damage;
+
+    // The rockets target.
     private Transform _target;
 
     void Start()
@@ -16,18 +15,20 @@ public class Rocket : MonoBehaviour
         Damage = StartingDamage;
     }
 
+    // Increase Damage when upgraded.
     public static void IncreaseDamage(float amount)
     {
         StartingDamage *= amount;
     }
 
-	// Use this for initialization
+	// Set the rockets target.
     public void Seek(Transform target)
     {
         _target = target;
     }
 	
-	// Update is called once per frame
+	// Check rockets target if it still exists.
+    // Damage target when in reaching distance.
 	void Update () {
 	    if (_target == null)
 	    {
@@ -48,6 +49,7 @@ public class Rocket : MonoBehaviour
         transform.Translate(distance.normalized * distanceThisFrame, Space.World);
 	}
 
+    // Damage target, destroy rocket.
     void HitTarget()
     {
         DamageTarget(_target);
