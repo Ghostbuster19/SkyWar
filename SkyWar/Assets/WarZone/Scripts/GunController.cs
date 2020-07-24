@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GunController : MonoBehaviour {
 
-    public AudioSource audio;
+    public AudioSource Audio;
     public AudioClip shoot;
     public GameObject FireParticle;
     public Light fireLight;
@@ -37,7 +37,7 @@ public class GunController : MonoBehaviour {
         if (fireTime > delay)
         {
             fireTime = 0;
-            audio.PlayOneShot(shoot);
+            Audio.PlayOneShot(shoot);
             FireParticle.SetActive(true);
             fireLight.enabled = true;
         }

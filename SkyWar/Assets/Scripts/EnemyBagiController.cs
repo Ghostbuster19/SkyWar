@@ -32,7 +32,7 @@ public class EnemyBagiController : MonoBehaviour
     private float _startingWorth = 40f;
 
     // The Tag that decides which objects are to be attacked
-    private string tag = "Player";
+    private string Tag = "Player";
 
     // Initializing specs and invoking the "UpdateTarget"-method.
     // Explained later.
@@ -75,7 +75,7 @@ public class EnemyBagiController : MonoBehaviour
     // To know if it was destroyed or something like that.
     void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Tag);
         float shortestDistance = Mathf.Infinity;
         float shortestFiringDistance = Mathf.Infinity;
         GameObject nearestFiringEnemy = null;

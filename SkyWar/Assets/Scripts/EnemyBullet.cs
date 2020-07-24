@@ -10,13 +10,13 @@ public class EnemyBullet : MonoBehaviour {
     public float Damage;
 
     // The bullets target.
-    private Transform _target;
+    public Transform _target;
 
     void Start()
     {
         Damage = StartingDamage;
     }
-
+    
     public static void IncreaseDamage(float amount)
     {
         StartingDamage *= amount;
@@ -27,6 +27,7 @@ public class EnemyBullet : MonoBehaviour {
     {
         _target = target;
     }
+    
 
     // Check if target is exsisting and move towards it.
     // If the bullet kills the target it will be destroyed.
@@ -37,7 +38,7 @@ public class EnemyBullet : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-
+        
         Vector3 distance = _target.position - transform.position;
         float distanceThisFrame = Speed * Time.deltaTime;
 
@@ -63,6 +64,7 @@ public class EnemyBullet : MonoBehaviour {
     {
         BagiController enemy = thisTarget.GetComponent<BagiController>();
         PlayerTurretController turretController = thisTarget.GetComponent<PlayerTurretController>();
+
         if (enemy != null)
         {
             enemy.TakeDamage(Damage);

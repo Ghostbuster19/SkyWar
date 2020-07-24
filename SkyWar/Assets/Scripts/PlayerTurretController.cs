@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PlayerTurretController : MonoBehaviour
 {
-
+    // Enum to distinguish between big and small turrets.
+    // Can contain more options if another type is to be added.
+    public enum Type
+    {
+        BIG,
+        SMALL
+    }
     // Audio clip when firing.
     public AudioClip Explosion;
     // Audio clip when destroyed.
@@ -15,18 +21,20 @@ public class PlayerTurretController : MonoBehaviour
     public GameObject RocketPrefab;
     // The position from which the rocket will be spawned.
     public Transform FirePoint;
+    // Choose between the big base turrets or the outter normal turrets
+    public Type type;
 
     // The starting rotation of the turret.
     private Quaternion _startingPosition;
 
     [Header("Attributes")]
     public static float UpgradeCost = 5000f;
-    public static float StartingHealth;
+    public float StartingHealth;
     public float Health;
-    public static float Range = 50f;
+    public float Range = 50f;
     public float FireRate = 1f;
-    public float RotationSpeed = 10f;
-    public float ResetSpeed = 10f;
+    public static float RotationSpeed = 10f;
+    public static float ResetSpeed = 10f;
     
     public  string Tag = "EnemyBagi";
     
@@ -35,6 +43,19 @@ public class PlayerTurretController : MonoBehaviour
     // Invokes the "UpdateTarget"-Method every half second to look for enemies.
     void Start()
     {
+        if (type == Type.BIG)
+        {
+            Health = 5000;
+            FireRate = 5;
+            Range = 100;
+        }
+        else
+        {
+            Health = 2000;
+            FireRate = 2;
+            Range = 50;
+        }
+
         StartingHealth = Health;
         _startingPosition = transform.rotation;
         InvokeRepeating("UpdateTarget", 0f, 0.33f);
@@ -106,7 +127,6 @@ public class PlayerTurretController : MonoBehaviour
     public void TakeDamage(float amount)
     {
         Health -= amount;
-
         if (Health <= 0)
         {
             AudioSource.PlayClipAtPoint(DestructionClip, transform.position);
@@ -118,6 +138,15 @@ public class PlayerTurretController : MonoBehaviour
     public void ResetHealth()
     {
         Health = StartingHealth;
+    }
+
+    public void UpgradeTurretStats(float amount)
+    {
+        Range *= amount;
+        // If the turret is not damaged then increase its current health as well.
+        if (Health == StartingHealth)
+            Health *= amount;
+        StartingHealth *= amount;
     }
 
     // In editor only method which displays the range of the tower.

@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GamePaused = false;
     public GameObject PauseMenuUi;
-    public AudioSource audio;
+    public AudioSource Audio;
 
     void Update()
     {
@@ -45,10 +45,10 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
-    // Method for muting the audio.
+    // Method for muting the Audio.
     public void MuteAudio()
     {
-        audio.mute = !audio.mute;
+        Audio.mute = !Audio.mute;
     }
 
     // Exit the game. Does not work in the editor.

@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4005121173188404}
   m_Layer: 8
   m_Name: PlayerTurret
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -467,13 +467,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosion: {fileID: 8300000, guid: ada2b838da7759d4d9e7057a3350de85, type: 3}
   DestructionClip: {fileID: 8300000, guid: 68dddb99aa4aafd4caddbd12284ab73f, type: 3}
-  Health: 5000
-  FireRate: 5
-  RotationSpeed: 10
-  ResetSpeed: 10
   RocketPrefab: {fileID: 1823894248609934, guid: e8b5000ffae267f41b1cd26d9b2bcb38,
     type: 2}
   FirePoint: {fileID: 4683334901207576}
+  type: 0
+  StartingHealth: 0
+  Health: 5000
+  Range: 50
+  FireRate: 5
   Tag: EnemyBagi
 --- !u!114 &114975683963265896
 MonoBehaviour:
